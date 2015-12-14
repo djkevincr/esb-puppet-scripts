@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="SecureProxy"
+       transports="https http"
+       startOnLoad="true">
+   <target>
+      <inSequence>
+         <header xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                 name="wsse:Security"
+                 action="remove"/>
+         <send>
+            <endpoint key="RealService"/>
+         </send>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+   </target>
+   <publishWSDL key="proxy_wsdl"/>
+   <policy key="security_policy"/>
+   <enableSec/>
+</proxy>

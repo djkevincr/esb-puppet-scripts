@@ -1,0 +1,18 @@
+--- 
+distributednode: 
+  sub_cluster_domain: mgt
+  clustering: true
+  depsync: true
+  hazelcast_port: 4100
+  members: 
+    - 
+      name: esb.wso2.com
+      port: 4200
+    - 
+      name: esb.wso2.com
+      port: 4300
+  offset: 1
+  port_mapping: 
+    - 
+      port: 9763
+      proxyport: 80

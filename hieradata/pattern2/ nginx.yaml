@@ -1,0 +1,31 @@
+---
+upstreams:
+    - 
+      name: wso2.esb.com
+      lb_mechanism: ip_hash
+      hosts:
+        host:
+          - 
+           hostname: esb.wso2.com
+           hostrole:
+           port: 8281
+          - 
+           hostname: esb.wso2.com
+           hostrole:
+           port: 8282 
+         - 
+           hostname: esb.wso2.com
+           hostrole:
+           port: 8283
+
+servers:
+  - 
+   port: 80
+   name: esb.wso2.com
+   locations:
+     location:
+        - 
+         context: "/"
+         proxypass: wso2.esb.com
+         protocol: http
+

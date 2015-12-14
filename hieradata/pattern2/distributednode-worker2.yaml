@@ -1,0 +1,15 @@
+--- 
+distributednode: 
+  sub_cluster_domain: worker
+  clustering: true
+  depsync: true
+  hazelcast_port: 4300
+  members: 
+    - 
+      name: esb.wso2.com
+      port: 4100
+    - 
+      name: esb.wso2.com
+      port: 4200
+  offset: 3
+ 

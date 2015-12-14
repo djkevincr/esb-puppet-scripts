@@ -1,0 +1,23 @@
+---
+datasources:
+ #MySQL server configuration
+ mysql_server : 10.100.7.86
+ mysql_port : 3306 
+ max_active : 50
+ max_wait : 60000
+ 
+ #Registry Database configuration
+ registry_database_jndi_conf : WSO2SharedDB
+ registry_database : wso2conreg_db
+ registry_user : root
+ registry_password : root
+ registry_server_host : 10.100.7.86
+ registry_server_port : 9443
+ registry_server_url : registry
+
+ #UserStore Database configuration
+ userstore_database_jndi_conf : WSO2UmDB
+ userstore_database : wso2conum_db
+ userstore_user : root
+ userstore_password : root
+

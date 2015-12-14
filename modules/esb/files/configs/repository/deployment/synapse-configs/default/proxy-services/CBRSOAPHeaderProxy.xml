@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="CBRSOAPHeaderProxy"
+       transports="https http"
+       startOnLoad="true"
+       trace="disable">
+   <description/>
+   <target>
+      <inSequence>
+         <filter xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                 xmlns:t="http://someuri"
+                 source="/soapenv:Envelope/soapenv:Header/t:routing"
+                 regex="xadmin;server1;community#1.0##">
+            <then>
+               <send>
+                  <endpoint key="RealService"/>
+               </send>
+            </then>
+            <else>
+               <makefault version="soap11">
+                  <code xmlns:sf11="http://schemas.xmlsoap.org/soap/envelope/" value="sf11:Server"/>
+                  <reason value="Invalid routing header"/>
+               </makefault>
+               <header name="To" action="remove"/>
+               <property name="RESPONSE" value="true"/>
+               <send/>
+            </else>
+         </filter>
+      </inSequence>
+   </target>
+   <publishWSDL key="proxy_wsdl"/>
+</proxy>

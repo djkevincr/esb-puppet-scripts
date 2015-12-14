@@ -1,0 +1,22 @@
+---
+nodeinfo: 
+ version: 4.9.0
+ maintenance_mode: zero
+ target: /mnt
+ owner: root
+ group: root
+ domain: wso2.com
+ esb_subdomain: esb
+ management_subdomain: management
+
+loadbalancer: nginx-ce
+
+depsync:
+ depsync_svn_repo: https://svn.wso2.com/
+ svn_user: user
+ svn_password: password
+
+deployment:
+ package_repo: http://downloads.wso2.com
+ local_package_dir: /mnt/packs
+ 

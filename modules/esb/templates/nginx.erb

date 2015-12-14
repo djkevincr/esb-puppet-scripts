@@ -1,0 +1,32 @@
+<%- require 'yaml' -%>
+<%- upstreams = scope.function_hiera(['upstreams']) -%>
+
+<%- upstreams.each do |upstream| -%>
+upstream <%= upstream["name"] %>{
+      <%- if upstream["lb_mechanism"]  -%>
+      <%= upstream["lb_mechanism"] -%>;
+      <%- end -%> 
+      <%- upstream["hosts"]["host"].each do |host| -%>
+      <%- if host["hostrole"] == 'passive' -%>
+      server <%=host["hostname"]%>:<%=host["port"] -%> backup;
+      <%- else -%>
+      server <%=host["hostname"]%>:<%=host["port"] -%>;
+      <%- end -%>
+      <%- end -%>
+}
+<%- end -%>
+
+<%- servers = scope.function_hiera(['servers']) -%>
+
+<%- servers.each do |server| -%>
+server {
+      listen <%= server["port"] %>;
+      server_name <%= server["name"] %>;
+
+      <%- server["locations"]["location"].each do |location| -%>
+      location <%= location["context"] %> {
+              proxy_pass <%= location["protocol"] %>://<%= location["proxypass"] -%>;
+      }
+      <%- end -%>     
+}
+<%- end -%>

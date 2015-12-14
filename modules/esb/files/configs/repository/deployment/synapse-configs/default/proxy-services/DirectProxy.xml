@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="DirectProxy"
+       transports="https http"
+       startOnLoad="true">
+   <target endpoint="RealService"/>
+   <publishWSDL key="proxy_wsdl"/>
+</proxy>

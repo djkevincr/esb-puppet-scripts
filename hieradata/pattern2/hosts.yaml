@@ -1,0 +1,12 @@
+---
+host_configuration:  
+  host_mappings: 
+    - 
+      host: esb.wso2.com
+      ip: 10.100.7.86
+    - 
+      host: esb.wso2.com
+      ip: 10.100.7.87
+  node_ip: 10.100.7.86
+  node_host: esb.wso2.com
+ 
