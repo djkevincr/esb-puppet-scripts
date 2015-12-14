@@ -14,7 +14,7 @@
 #  limitations under the License.
 # ----------------------------------------------------------------------------
 
-class hosts (
+class esb::hosts (
    $node_ip             = undef,
    $node_host           = undef,
    $host_mappings       = undef,

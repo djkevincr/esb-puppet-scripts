@@ -14,7 +14,7 @@
 #  limitations under the License.
 # ----------------------------------------------------------------------------
 
-class esb (
+class esb::esb (
   $sub_cluster_domain = undef,
   $port_mapping       = undef,
   $version            = '4.9.0',
